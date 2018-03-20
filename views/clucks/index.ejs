@@ -1,0 +1,55 @@
+<%- include('../partials/header') %>
+
+<div class="clucks-list">
+
+  <% for (let cluck of clucks) {
+
+<!-- Calculate time -->
+
+function timeSince(date) {
+
+var seconds = Math.floor((new Date() - date) / 1000);
+
+var interval = Math.floor(seconds / 31536000);
+
+if (interval > 1) {
+return interval + " years";
+}
+interval = Math.floor(seconds / 2592000);
+if (interval > 1) {
+return interval + " months";
+}
+interval = Math.floor(seconds / 86400);
+if (interval > 1) {
+return interval + " days";
+}
+interval = Math.floor(seconds / 3600);
+if (interval > 1) {
+return interval + " hours";
+}
+interval = Math.floor(seconds / 60);
+if (interval > 1) {
+return interval + " minutes";
+}
+return Math.floor(seconds) + " seconds";
+}
+var aDay = 24*60*60*1000
+timeAgo = timeSince(new Date(cluck.createdAt));
+%>
+
+    <div class="container-fluid">
+      <a href="/clucks/<%= cluck.id %>">
+        <img class="img-fluid" src="<%= cluck.image_url %>" />
+      </a>
+      <div class="container-body">
+        <h4 class="container-title"><%= cluck.username %> <img src="https://img00.deviantart.net/9b4d/i/2013/070/c/9/cute_little_chicken_by_citra1zaoldyeck-d5xprk7.png">
+        <p class="container-time"><%= timeAgo %> ago</p>
+        <p class="container-text"><%= cluck.content %></p></h4>
+
+
+      </div>
+    </div>
+  <% } %>
+</div>
+
+<%- include('../partials/footer') %>
