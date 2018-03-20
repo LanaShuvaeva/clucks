@@ -1,0 +1,15 @@
+<%- include('../partials/header') %>
+
+<div class="container-fluid">
+  <img class="img-fluid" src="<%= cluck.image_url %>" />
+
+  <div class="container-body">
+    <h4 class="container-title"><%= cluck.username %> <img src="https://img00.deviantart.net/9b4d/i/2013/070/c/9/cute_little_chicken_by_citra1zaoldyeck-d5xprk7.png">
+    <p class="container-time"><%= timeAgo %> ago</p>
+    <p class="container-text"><%= cluck.content %></p></h4>
+
+
+  </div>
+</div>
+
+<%- include('../partials/footer') %>
